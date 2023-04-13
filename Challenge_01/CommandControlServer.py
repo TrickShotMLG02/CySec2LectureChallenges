@@ -20,6 +20,8 @@ def sendCommandThread(clientIP):
 
 def main():
     clientIPs = getClientIPs()
+
+    # Send commands to all clients by using a separate thread for each client for improving performance due to rapidly changing client ips
     threads = []
     for clientIP in clientIPs:
         thread = threading.Thread(target=sendCommandThread, args=(clientIP,))
