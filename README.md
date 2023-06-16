@@ -75,4 +75,4 @@
 - You have a GIT repository with 100000 commits
 - One commit introduced a bug which still exists in the latest version
 - Find the bug, and identify the commit which first introduced the bug
-- The flag is CYSEC{<commit hash>}
+- The flag is CYSEC{<commit_hash>}
