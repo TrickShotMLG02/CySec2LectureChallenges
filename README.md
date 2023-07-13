@@ -76,3 +76,37 @@
 - One commit introduced a bug which still exists in the latest version
 - Find the bug, and identify the commit which first introduced the bug
 - The flag is CYSEC{<commit_hash>}
+
+<br>
+
+
+# Challenge 08: Mystery Binary
+                                            
+- Figure out how to run the binary and get the flag
+- Hint: It is neither a Linux nor a Windows binary
+- If you manage to run it, it will ask for a PIN
+- Entering the correct PIN reveals the flag
+- Use a disassembler (such as radare2)
+- Hint: Don't look directly for the flag, look for the PIN
+
+<br>
+
+
+# Challenge 09: Filter
+                                            
+- You have a program (source attached) that reads in a file containing one (positive) floating-point number per line
+- It outputs the smallest and the largest number and ignores all lines which are not floating-point numbers
+- At the end, it has a sanity check: if the largest number is smaller than the smallest number, it considers the system broken and gives you a flag
+- Upload your input file to http://challenge.attacking.systems/filter to get the flag
+
+<br>
+
+
+# Challenge 10: Executable Data
+                                            
+- You have a legacy app with a JIT compiler
+- It crashes because the data segment is not executable
+- Make the data segment executable, but not the stack!
+- Program aborts (for security reasons) if the stack is executable
+- Change at most 8 bits, and do not change the code of the application
+- Upload your patched binary to https://challenge.attacking.systems/jit/ to get the flag
