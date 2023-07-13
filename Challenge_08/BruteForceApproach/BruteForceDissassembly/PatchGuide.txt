@@ -1,0 +1,18 @@
+Line 858 in bank_000.asm:
+
+CHANGE
+    ld hl, $0bb8
+TO
+    ld hl, $2
+
+FOR VERY SHORT WAITING TIME ON WRONG VBlankInterrupt
+
+
+Line 7746 in bank_000.asm
+
+CHANGE:
+    jr jr_000_20f8
+TO
+    jr jr_000_2100
+
+FOR VERY SHORT WAITING TIME BETWEEN KEY INPUT

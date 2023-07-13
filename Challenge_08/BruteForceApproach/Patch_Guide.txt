@@ -1,0 +1,15 @@
+1. Get target platform on unix system using "file mystery" command
+2. It prints Game Boy ROM image "HACKLET" (Rev.01) [ROM ONLY], ROM: 256Kbit
+3. Download mgbdis from https://github.com/mattcurrie/mgbdis
+4. Copy the ROM (mystery) into the mgbdis folder
+5. Use mgbdis to disassemble the ROM with the command "./mgbdis.py mystery"
+6. Go into directory "disassembly"
+7. Open file "bank_000.asm" in a code editor
+8. Go to the Line 858 and change the code "ld hl, $0bb8" to "ld hl, $2" to reduce the waiting time on wrong pin input
+9. Go to the Line 7446 and change the code " jr jr_000_20f8" to "jr jr_000_2100" to reduce the waiting time between key inputs
+10. Save the file
+11. Install RGBDS from https://rgbds.gbdev.io/install
+12. Compile the ROM with the command "make"
+13. Open the ROM in a GameBoyEmulator
+14. Run the python script mysteryBruteForce.py
+15. Select the GameBoyEmulator window and wait for the bruteforce to finish

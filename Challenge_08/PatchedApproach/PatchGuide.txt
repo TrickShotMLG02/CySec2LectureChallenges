@@ -1,0 +1,13 @@
+1. Get target platform on unix system using "file mystery" command
+2. It prints Game Boy ROM image "HACKLET" (Rev.01) [ROM ONLY], ROM: 256Kbit
+3. Download mgbdis from https://github.com/mattcurrie/mgbdis
+4. Copy the ROM (mystery) into the mgbdis folder
+5. Use mgbdis to disassemble the ROM with the command "./mgbdis.py mystery"
+6. Go into directory "disassembly"
+7. Open file "bank_000.asm" in a code editor
+8. Go to the Line 834 and change the code "jp z, Jump_000_03f9" to "jp nz, Jump_000_03f9" to show the flag as soon as a wrong pin is entered
+9. Save the file
+10. Install RGBDS from https://rgbds.gbdev.io/install
+11. Compile the ROM with the command "make"
+12. Open the ROM in a GameBoyEmulator and press enter to try the pin "000000"
+13. Since the pin is invalid, it will show the flag "CYSEC{GB_HACKING!}"
