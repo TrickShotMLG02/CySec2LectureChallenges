@@ -110,3 +110,28 @@
 - Program aborts (for security reasons) if the stack is executable
 - Change at most 8 bits, and do not change the code of the application
 - Upload your patched binary to https://challenge.attacking.systems/jit/ to get the flag
+
+<br>
+
+
+# Challenge 11: SecWrap
+                                            
+- Write a tiny sandbox wrapper secwrap in C
+- Blacklist relevant syscalls in the wrapped binary to get the following output:
+- ./secwrap htop should work
+- ./secwrap ls -la should work
+- ./secwrap bash should not work
+- The size of C file must be <= 1000 bytes
+- The C file must compile with: gcc -std=gnu11 secwrap.c -o secwrap -lseccomp
+- Upload your C file at https://challenge.attacking.systems/seccomp/
+- If it is correct, you will get the flag
+
+<br>
+
+
+# Challenge 12: Leaky Server
+- You have access to an IoT server that can send requests
+- The server runs at challenge.attacking.systems:5012
+- Hint: to connect to the binary, use "nc challenge.attacking.systems 5012"
+- The server adds a secret flag to the request for authentication
+- Can you get the secret flag using a side channel?
